@@ -15,9 +15,16 @@ class MainPage extends Component {
     })
   }
 
-  // updateQuery = (query) => {
-  //   this.setState({ query: query.trim() })
-  // }
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    .then((resp) => {
+      book.shelf = shelf
+      this.setState((prevState) => ({
+        books: [...prevState.books.filter(b => b.id !== book.id), ...[book]]
+      }))
+    })
+    console.log(this.state)
+  }
 
   render() {
     return (
@@ -30,14 +37,17 @@ class MainPage extends Component {
                 <Shelf
                   name="Currently Reading"
                   books={this.state.books.filter(book => book.shelf === "currentlyReading")}
+                  changeShelf={this.changeShelf}
                 />
                 <Shelf
                   name="Want To Read"
                   books={this.state.books.filter(book => book.shelf === "wantToRead")}
+                  changeShelf={this.changeShelf}
                 />
                 <Shelf
                   name="Read"
                   books={this.state.books.filter(book => book.shelf === "read")}
+                  changeShelf={this.changeShelf}
                 />
               </div>
             </div>
