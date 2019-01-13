@@ -11,7 +11,7 @@ class MainPage extends Component {
   componentDidMount() {
     BooksAPI.getAll().then((resp) => {
       this.setState({ books: resp })
-      console.log(this.state.books)
+      console.log(this.state)
     })
   }
 
