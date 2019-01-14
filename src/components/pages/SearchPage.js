@@ -29,14 +29,14 @@ class SearchPage extends Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() }, this.searchBooks)
+    this.setState({ query: query }, this.searchBooks)
   }
 
   searchBooks() {
     if (this.state.query === '' || this.state.query === undefined) {
       return this.setState({ searchResults: []})
     } else {
-      BooksAPI.search(this.state.query.trim()).then((resp) => {
+      BooksAPI.search(this.state.query).then((resp) => {
         if (resp.error) {
           this.setState({ searchResults: []})
         } else {
