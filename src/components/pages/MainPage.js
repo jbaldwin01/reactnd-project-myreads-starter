@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import Shelf from '../Shelf'
 import * as BooksAPI from '../../BooksAPI'
+import sortBy from 'sort-by'
 
 class MainPage extends Component {
   state = {
@@ -36,17 +37,17 @@ class MainPage extends Component {
               <div>
                 <Shelf
                   name="Currently Reading"
-                  books={this.state.books.filter(book => book.shelf === "currentlyReading")}
+                  books={this.state.books.filter(book => book.shelf === "currentlyReading").sort(sortBy('title'))}
                   changeShelf={this.changeShelf}
                 />
                 <Shelf
                   name="Want To Read"
-                  books={this.state.books.filter(book => book.shelf === "wantToRead")}
+                  books={this.state.books.filter(book => book.shelf === "wantToRead").sort(sortBy('title'))}
                   changeShelf={this.changeShelf}
                 />
                 <Shelf
                   name="Read"
-                  books={this.state.books.filter(book => book.shelf === "read")}
+                  books={this.state.books.filter(book => book.shelf === "read").sort(sortBy('title'))}
                   changeShelf={this.changeShelf}
                 />
               </div>
