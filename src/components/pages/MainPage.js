@@ -12,7 +12,7 @@ class MainPage extends Component {
   componentDidMount() {
     BooksAPI.getAll().then((resp) => {
       this.setState({ books: resp })
-      console.log(this.state)
+      // console.log(this.state)
     })
   }
 
@@ -24,7 +24,7 @@ class MainPage extends Component {
         books: [...prevState.books.filter(b => b.id !== book.id), ...[book]]
       }))
     })
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   render() {

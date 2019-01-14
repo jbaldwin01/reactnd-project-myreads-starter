@@ -14,7 +14,7 @@ class SearchPage extends Component {
   componentDidMount() {
     BooksAPI.getAll().then((resp) => {
       this.setState({ books: resp })
-      console.log(this.state)
+      // console.log(this.state)
     })
   }
 
@@ -43,12 +43,12 @@ class SearchPage extends Component {
           resp.forEach(element => {
             let matches = this.state.books.filter(book => book.id === element.id)
             if(matches[0]) {
-              console.log(`match=${matches[0].title}`)
+              // console.log(`match=${matches[0].title}`)
               element.shelf = matches[0].shelf
             }
           })
           this.setState({ searchResults: resp})
-          console.log(this.state)
+          // console.log(this.state)
         }
       })
     }
