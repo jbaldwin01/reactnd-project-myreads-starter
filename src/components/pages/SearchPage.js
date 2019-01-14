@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from '../../BooksAPI'
 import Book from '../Book'
+import sortBy from 'sort-by'
 
 class SearchPage extends Component {
   state = {
@@ -78,7 +79,7 @@ class SearchPage extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {
-              this.state.searchResults.map((book) => 
+              this.state.searchResults.sort(sortBy('title')).map((book) => 
                 <Book
                   key={book.id}
                   book={book}
